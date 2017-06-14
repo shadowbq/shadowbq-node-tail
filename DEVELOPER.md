@@ -1,3 +1,4 @@
+How to [1]:
 ```
 shadowbq   master  ~  sandbox-public  shadowbq-node-tail  cat package.json 
 {
@@ -44,3 +45,4 @@ To https://github.com/shadowbq/shadowbq-node-tail.git
  shadowbq   master  ~  sandbox-public  shadowbq-node-tail  npm publish
 + shadowbq-node-tail@1.0.1
 ```
+[1] https://quickleft.com/blog/creating-and-publishing-a-node-js-module/
