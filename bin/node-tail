@@ -1,0 +1,40 @@
+#!/usr/bin/env node
+
+pry = require('pryjs')
+// place eval where you want a break point
+// eval(pry.it);
+
+var program = require('commander');
+var nodetail = require('../lib/server');
+
+program
+  .version('0.0.6')
+  .usage('[options] file')
+  .option('-n, --lines <lines>', 'output the last NUM lines, instead of the last 10')
+  .option('--retry', 'keep trying to open a file if it is inaccessible')
+  .option('-H, --host <host>','custom Hostname')
+  .option('-p, --port <port>', 'custom port')
+  .option('--cert <cert>', 'https server cert file path')
+  .option('--key <key>', 'https server key file path')
+  .option('--skip_tls', 'use http instead of https')
+  .option('-m, --mode <mode>', 'log display mode')
+  .option('-s, --secret <secret>', 'string used for signing cookies')
+  .option('--user <user>', 'auth user name')
+  .option('--pass <password>', 'auth password');
+
+program.parse(process.argv);
+
+nodetail({
+  host   : program.host,
+  port   : program.port,
+  user   : program.user,
+  pass   : program.pass,
+  mode   : program.mode,
+  key    : program.key,
+  cert   : program.cert,
+  secret : program.secret,
+  skip_tls : program.skip_tls,
+  lines : program.lines,
+  retry : program.retry,
+  file   : program.args[0]
+});

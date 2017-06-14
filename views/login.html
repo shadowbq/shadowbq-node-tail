@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=2">
+		<title>Login | socket logs</title>
+	</head>
+	<body>
+		<form action="/" method="post">
+			<input type="text" placeholder="user name" name="userName" tabindex="1"/>
+			<input type="password" placeholder="password" name="password" tabindex="2"/>
+			<input type="submit" value="Login" tabindex="3"/>
+			<button type="button" onclick="clearAll()">Clear</button>
+		</form>
+		<script>
+			onload = function() {
+				var form = document.forms[0];
+				var userNameInput = document.querySelector("input[name=userName]");
+				var passwordInput = document.querySelector("input[name=password]");
+				form.onsubmit = function() {
+					localStorage.setItem("userName", userNameInput.value);
+					localStorage.setItem("password", passwordInput.value);
+				};
+				userNameInput.value = localStorage.getItem("userName");
+				passwordInput.value = localStorage.getItem("password");
+			};
+			function clearAll() {
+				var userNameInput = document.querySelector("input[name=userName]");
+				var passwordInput = document.querySelector("input[name=password]");
+				localStorage.removeItem("userName");
+				localStorage.removeItem("password");
+				userNameInput.value = localStorage.getItem("userName");
+				passwordInput.value = localStorage.getItem("password");
+			}
+		</script>
+	</body>
+</html>
+

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset='utf-8'>
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=2">
+		<title>{{name}} | node-tail</title>
+		<link rel='stylesheet' href='/css/style.css' type='text/css'/>
+	</head>
+	<body>
+		<pre id="log"></pre>
+		<script src="/socket.io/socket.io.js"></script>
+		<script>
+			onload = connect;
+			window.onkeypress = keypress;
+			function connect() {
+				var el = getLogElement();
+				var socket;
+				try {
+					socket = io.connect('{{proto}}://{{host}}:{{port}}');
+				} catch(e) {
+					console.error(e);
+					setTimeout(connect, 100);
+				}
+				socket.on('log', function (data) {
+					var mode = '{{mode}}';
+					switch (mode) {
+						case 'scrollBottom':
+							el.innerHTML += data;
+							window.scrollTo(0, document.body.scrollHeight);
+							break;
+						case 'scrollTop':
+							el.innerHTML = data;
+							break;
+					}
+				});
+			}
+			function keypress(e) {
+				if (e.ctrlKey && e.key === 'l') {
+					var el = getLogElement();
+					el.innerHTML = '';
+					e.preventDefault();
+				}
+			}
+			function getLogElement() {
+				return document.getElementById('log');
+			}
+		</script>
+	</body>
+</html>
