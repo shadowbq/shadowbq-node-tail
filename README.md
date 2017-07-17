@@ -33,6 +33,7 @@ Options:
   --cert <cert>          https server cert file path
   --key <key>            https server key file path
   --skip_tls             use http instead of https
+  --rotatable            use new files if rotatable
   -m, --mode <mode>      log display mode
   -s, --secret <secret>  string used for signing cookies
   --user <user>          auth user name
