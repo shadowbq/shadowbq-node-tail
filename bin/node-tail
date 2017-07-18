@@ -8,7 +8,7 @@ var program = require('commander');
 var nodetail = require('../lib/server');
 
 program
-  .version('1.0.3')
+  .version('1.0.4')
   .usage('[options] file')
   .option('-n, --lines <lines>', 'output the last NUM lines, instead of the last 10')
   .option('--retry', 'keep trying to open a file if it is inaccessible')
@@ -21,7 +21,8 @@ program
   .option('-m, --mode <mode>', 'log display mode')
   .option('-s, --secret <secret>', 'string used for signing cookies')
   .option('--user <user>', 'auth user name')
-  .option('--pass <password>', 'auth password');
+  .option('--pass <password>', 'auth password')
+  .option('--css <file>', 'auth password');
 
 program.parse(process.argv);
 
@@ -36,7 +37,8 @@ nodetail({
   secret : program.secret,
   skip_tls : program.skip_tls,
   rotatable : program.rotatable,
-  lines : program.lines,
-  retry : program.retry,
+  lines  : program.lines,
+  retry  : program.retry,
+  css    : program.css,
   file   : program.args[0]
 });

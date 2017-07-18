@@ -1,14 +1,16 @@
 ﻿node-tail
 =========
 
-  Web `tail` - display last part of a file. This is a io-redirect of the OS native spawn implementation of the GNU tool `tail`.
+  Web `tail` - display last part of a file. This is a io-redirect of the OS native spawn implementation of the GNU tool `tail`. It provides an express server to wrap an .io socket. SSL/TLS, authentication, and custom CSS handlers can be used.
 
 Install
 -------
 
 ```bash
-npm install -g node-tail
+npm install -g shadowbq-node-tail
 ```
+
+* https://www.npmjs.com/package/shadowbq-node-tail
 
 Usage
 -----
@@ -38,6 +40,7 @@ Options:
   -s, --secret <secret>  string used for signing cookies
   --user <user>          auth user name
   --pass <password>      auth password
+  --css <file>           custom css file for server
 ```
 
 Example:
