@@ -16,7 +16,8 @@
 				var el = getLogElement();
 				var socket;
 				try {
-					socket = io.connect('{{proto}}://{{host}}:{{port}}');
+					//socket = io.connect('{{proto}}://{{host}}:{{port}}');
+					socket = io();
 				} catch(e) {
 					console.error(e);
 					setTimeout(connect, 100);
