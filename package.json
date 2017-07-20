@@ -1,6 +1,6 @@
 {
   "name": "shadowbq-node-tail",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "author": "shadowbq <shadowbq@gmail.com>",
   "preferGlobal": "false",
   "bin": {
